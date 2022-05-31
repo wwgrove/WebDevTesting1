@@ -26,7 +26,7 @@ print('DEBUG: 23:')
 @app.route('/list')
 def listStuff():
     print("DEBUG INSIDE LIST: 25:")
-    con = sql.connect("C:\\Users\wwingrove23\eclipse-workspace\PyCode\Assignments\WebDevTesting1\database.db")
+    con = sql.connect("D:\CompSci Stuff\WebDevTesting1\database.db")
     con.row_factory = sql.Row
    
     cur = con.cursor() 
