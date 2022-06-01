@@ -37,15 +37,26 @@ def listStuff():
     
        
     return render_template("testing1.html", rows=rows)
-
-
-
     
+@app.route("/delete?pk=['pk']")   # URL '/' to be handled by main() route handler
+def delete():
+    
+    con = sql.connect("D:\CompSci Stuff\WebDevTesting1\database.db")
+    con.row_factory = sql.Row
+   
+    cur = con.cursor() 
+    cur.execute("select * from students")
+    rows = cur.fetchall(); 
+    pk = request.args['pk']
+    return ("deleted")
+
+
+'''
 @app.route('/')   # URL '/' to be handled by main() route handler
 def index():
     name = 'Wonder'
     return render_template('index.html', title='Welcome',username=name)
-
+'''
 if __name__ == '__main__':  # Script executed directly?
     
     app.debug = True
