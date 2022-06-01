@@ -17,20 +17,6 @@ from flask import request
 
 from addflask import students
 
-class students(db.Model):
-   id = db.Column('student_id', db.Integer, primary_key = True)
-   name = db.Column(db.String(32))
-   city = db.Column(db.String(32))
-   addr = db.Column(db.String(32))
-   pk = db.Column(db.String(32)) 
-   
-   def __init__(self, name, city, addr,pk):
-       self.name = name
-       self.city = city
-       self.addr = addr
-       self.pk = pk
-
-
 app = Flask(__name__)    # Construct an instance of Flask class for our webapp
 app.config['SQLALCHEMY_DATABASE_URI']  = 'sqlite:///db.sqlite3'
 
