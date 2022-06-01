@@ -15,6 +15,21 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlite3 as sql
 from flask import request
 
+from addflask import students
+
+class students(db.Model):
+   id = db.Column('student_id', db.Integer, primary_key = True)
+   name = db.Column(db.String(32))
+   city = db.Column(db.String(32))
+   addr = db.Column(db.String(32))
+   pk = db.Column(db.String(32)) 
+   
+   def __init__(self, name, city, addr,pk):
+       self.name = name
+       self.city = city
+       self.addr = addr
+       self.pk = pk
+
 
 app = Flask(__name__)    # Construct an instance of Flask class for our webapp
 app.config['SQLALCHEMY_DATABASE_URI']  = 'sqlite:///db.sqlite3'
@@ -38,7 +53,7 @@ def listStuff():
        
     return render_template("testing1.html", rows=rows)
     
-@app.route("/delete?pk=['pk']")   # URL '/' to be handled by main() route handler
+@app.route("/delete?pk=1")   
 def delete():
     
     con = sql.connect("D:\CompSci Stuff\WebDevTesting1\database.db")
@@ -48,7 +63,15 @@ def delete():
     cur.execute("select * from students")
     rows = cur.fetchall(); 
     pk = request.args['pk']
-    return ("deleted")
+    name = request.args['name']
+    city = request.args['city']
+    addr = request.args['addr']
+       
+
+    student = students(pk,name,city,addr)
+
+    db.session.delete(student)
+    return ("delete")
 
 
 '''
