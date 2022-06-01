@@ -3,6 +3,7 @@
    <body>
    
       <table border = 1>
+         <form action="/submit_get" method="get">
          <thead>
             <td>delete</td>
             <td>Name</td>
@@ -14,7 +15,7 @@
          {% for row in rows %}
             <tr>
                <!--<td> <button type="submit" form="form1" name="delete" value="{{ row['pk']}}">Submit</button> </td> -->
-               <td><a href="delete?pk={{ row['pk']}}">delete </a></td>
+               <td><input type="checkbox" id="pk" name="chbox" value=balls></td>
                <td>{{row["name"]}}</td>
                <td>{{row["addr"]}}</td> 
                <td>{{ row["city"]}}</td>
@@ -22,9 +23,11 @@
             </tr>
             
          {% endfor %}
+         
       </table>
-      
-      <a href = "/">Go back to home page</a>
+
+        <input type="submit" value="Submit">
+    </form>
       
    </body>
 </html>

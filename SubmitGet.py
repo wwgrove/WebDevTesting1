@@ -38,7 +38,7 @@ def submit_get():
        last_name = request.args['lname']
        
        
-       
+    
        
        return "Your name is "+ first_name + ' ' + last_name
    
