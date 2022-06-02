@@ -44,11 +44,10 @@ def delete():
 
     if request.method == "GET":
 
-       name1 = request.args["name"]
-       city1 = request.args["city"]
-       
-       print(name1 + city1)
+        pk = request.args['pk']
     
+        print(pk)
+'''
     con = sql.connect("D:\CompSci Stuff\WebDevTesting1\database.db")
     con.row_factory = sql.Row
    
@@ -65,15 +64,14 @@ def delete():
     student = students(pk,name,city,addr)
 
     db.session.delete(student)
+
     return ("delete")
-
-
 '''
 @app.route('/')   # URL '/' to be handled by main() route handler
 def index():
     name = 'Wonder'
     return render_template('index.html', title='Welcome',username=name)
-'''
+
 if __name__ == '__main__':  # Script executed directly?
     
     app.debug = True
