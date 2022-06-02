@@ -27,7 +27,7 @@ print('DEBUG: 23:')
 @app.route('/list')
 def listStuff():
     print("DEBUG INSIDE LIST: 25:")
-    con = sql.connect("D:\CompSci Stuff\WebDevTesting1\database.db")
+    con = sql.connect("C:\\Users\wwingrove23\eclipse-workspace\PyCode\Assignments\WebDevTesting1\database.db")
     con.row_factory = sql.Row
    
     cur = con.cursor() 
@@ -39,24 +39,22 @@ def listStuff():
        
     return render_template("testing1.html", rows=rows)
     
-@app.route("/delete?pk=1")   
+@app.route("/delete")   
 def delete():
     
-    con = sql.connect("D:\CompSci Stuff\WebDevTesting1\database.db")
+    con = sql.connect("C:\\Users\wwingrove23\eclipse-workspace\PyCode\Assignments\WebDevTesting1\database.db")
     con.row_factory = sql.Row
    
     cur = con.cursor() 
     cur.execute("select * from students")
     rows = cur.fetchall(); 
     pk = request.args['pk']
-    name = request.args['name']
-    city = request.args['city']
-    addr = request.args['addr']
-       
+    
+    print(pk)   
 
-    student = students(pk,name,city,addr)
+    #student = students(pk)
 
-    db.session.delete(student)
+    #db.session.delete(student)
     return ("delete")
 
 
